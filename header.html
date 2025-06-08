@@ -1,0 +1,27 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <div class="site-branding">
+        <a href="{{ '/' | relative_url }}" class="site-title">
+          {{ site.title }}
+        </a>
+      </div>
+
+      <nav class="main-navigation" id="main-navigation">
+        <ul>
+          <li><a href="{{ '/' | relative_url }}" {% if page.url == "/" %}class="current"{% endif %}>Home</a></li>
+          <li><a href="{{ '/about/' | relative_url }}" {% if page.url == "/about/" %}class="current"{% endif %}>About</a></li>
+          <li><a href="{{ '/music/' | relative_url }}" {% if page.url == "/music/" %}class="current"{% endif %}>Music</a></li>
+          <li><a href="{{ '/discography/' | relative_url }}" {% if page.url == "/discography/" %}class="current"{% endif %}>Discography</a></li>
+          <li><a href="{{ '/news/' | relative_url }}" {% if page.url == "/news/" %}class="current"{% endif %}>News</a></li>
+          <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains "/blog" %}class="current"{% endif %}>Blog</a></li>
+        </ul>
+      </nav>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+

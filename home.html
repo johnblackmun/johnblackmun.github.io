@@ -1,0 +1,103 @@
+---
+layout: default
+---
+
+{% if page.url == "/" %}
+  <!-- Hero Section for Homepage -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1>{{ site.hero.title | default: site.title }}</h1>
+        <p class="tagline">{{ site.hero.tagline | default: site.description }}</p>
+        <div class="hero-buttons">
+          <a href="{{ '/music/' | relative_url }}" class="btn">Listen Now</a>
+          <a href="{{ '/about/' | relative_url }}" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Music Section -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">Latest Music</h2>
+      <div class="card-grid">
+        {% assign latest_songs = site.songs | sort: 'date' | reverse | limit: 3 %}
+        {% for song in latest_songs %}
+          <div class="card fade-in">
+            {% if song.artwork %}
+              <div class="card-image">
+                <img src="{{ song.artwork | relative_url }}" alt="{{ song.title }}">
+              </div>
+            {% endif %}
+            <h3>{{ song.title }}</h3>
+            <p>{{ song.excerpt | strip_html | truncatewords: 20 }}</p>
+            {% if song.duration %}
+              <p class="song-duration"><i class="fas fa-clock"></i> {{ song.duration }}</p>
+            {% endif %}
+            {% if song.spotify_link %}
+              <a href="{{ song.spotify_link }}" class="btn" target="_blank">Listen on Spotify</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+        
+        {% if latest_songs.size == 0 %}
+          <div class="card">
+            <h3>Coming Soon</h3>
+            <p>New music is on the way. Stay tuned for the latest releases!</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News Section -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">Latest News</h2>
+      <div class="card-grid">
+        {% assign latest_posts = site.posts | limit: 3 %}
+        {% for post in latest_posts %}
+          <div class="card fade-in">
+            {% if post.featured_image %}
+              <div class="card-image">
+                <img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}">
+              </div>
+            {% endif %}
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="post-meta">
+              <i class="fas fa-calendar"></i> {{ post.date | date: "%B %d, %Y" }}
+            </p>
+            <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            <a href="{{ post.url | relative_url }}" class="btn btn-outline">Read More</a>
+          </div>
+        {% endfor %}
+        
+        {% if latest_posts.size == 0 %}
+          <div class="card">
+            <h3>Welcome</h3>
+            <p>Welcome to my website! Check back soon for updates and news.</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% else %}
+  <!-- Regular page content -->
+  <section class="content-section">
+    <div class="container">
+      <h1 class="page-title">{{ page.title }}</h1>
+      
+      {% if page.featured_image %}
+        <div class="page-featured-image">
+          <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}">
+        </div>
+      {% endif %}
+      
+      <div class="page-content">
+        {{ content }}
+      </div>
+    </div>
+  </section>
+{% endif %}
+

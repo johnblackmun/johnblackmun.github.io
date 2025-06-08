@@ -1,0 +1,115 @@
+# Site settings
+title: John Blackmun
+email: hello@johnblackmun.com
+description: >-
+  Singer-songwriter crafting heartfelt melodies and authentic stories through music.
+  Explore my latest releases, tour dates, and musical journey.
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://johnblackmun.github.io" # the base hostname & protocol for your site
+
+# Social media links
+social:
+  spotify: "https://open.spotify.com/artist/johnblackmun"
+  apple_music: "https://music.apple.com/artist/johnblackmun"
+  youtube: "https://youtube.com/@johnblackmun"
+  instagram: "https://instagram.com/johnblackmun"
+  facebook: "https://facebook.com/johnblackmun"
+  twitter: "https://twitter.com/johnblackmun"
+
+# Hero section
+hero:
+  title: "John Blackmun"
+  tagline: "Singer • Songwriter • Storyteller"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
+# GitHub Actions build settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Collections
+collections:
+  albums:
+    output: true
+    permalink: /discography/:name/
+  songs:
+    output: true
+    permalink: /music/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "John Blackmun"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "albums"
+    values:
+      layout: "album"
+  - scope:
+      path: ""
+      type: "songs"
+    values:
+      layout: "song"
+
+# Pagination
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE.md
+
+# SEO settings
+author:
+  name: John Blackmun
+  email: hello@johnblackmun.com
+  twitter: johnblackmun
+
+twitter:
+  username: johnblackmun
+  card: summary_large_image
+
+facebook:
+  app_id: 
+  publisher: 
+  admins: 
+
+# Google Analytics
+google_analytics: 
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
